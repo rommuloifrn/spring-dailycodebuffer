@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity // faz a classe poder ter interação com a database
 public class Department {
@@ -11,8 +12,10 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long departmentId;
+
+    @NotBlank(message="Please add department name.")
     private String departmentName;
-    private String departmentAdress;
+    private String departmentAddress;
     private String departmentCode;
 
     public Department() {
@@ -21,7 +24,7 @@ public class Department {
     public Department(Long departmentId, String departmentName, String departmentAdress, String departmentCode) {
         this.departmentId = departmentId;
         this.departmentName = departmentName;
-        this.departmentAdress = departmentAdress;
+        this.departmentAddress = departmentAdress;
         this.departmentCode = departmentCode;
     }
 
@@ -41,12 +44,12 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public String getDepartmentAdress() {
-        return departmentAdress;
+    public String getDepartmentAddress() {
+        return departmentAddress;
     }
 
-    public void setDepartmentAdress(String departmentAdress) {
-        this.departmentAdress = departmentAdress;
+    public void setDepartmentAddress(String departmentAddress) {
+        this.departmentAddress = departmentAddress;
     }
 
     public String getDepartmentCode() {
@@ -62,7 +65,7 @@ public class Department {
         return "Department{" +
                 "departmentId=" + departmentId +
                 ", departmentName='" + departmentName + '\'' +
-                ", departmentAdress='" + departmentAdress + '\'' +
+                ", departmentAddress='" + departmentAddress + '\'' +
                 ", departmentCode='" + departmentCode + '\'' +
                 '}';
     }
